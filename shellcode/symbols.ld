@@ -1,0 +1,3 @@
+PROVIDE(printf = 0xFFFF0000F8874538);
+PROVIDE(external_lib_avb_str = 0xFFFF0000F88B0512);
+PROVIDE(kernel_aspace = 0xFFFF0000F8ACBC88);

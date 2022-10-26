@@ -1,0 +1,31 @@
+OUTPUT_ARCH(aarch64)
+ENTRY(entry)
+
+PHDRS
+{
+        text PT_LOAD FLAGS(7);
+        bss PT_LOAD FLAGS(7);
+}
+
+SECTIONS
+{
+        .text :
+                {
+			*(.shellcode_entry)
+                        *(.text)
+                        *(.text*)
+			*(.data)
+			*(.rodata*)
+			*(.bss)
+			*(.iplt*)
+			*(.igot*)
+			*(.got*)
+			*(.rela*)
+                } : text
+
+	INCLUDE "functions.ld"
+	INCLUDE "symbols.ld"
+
+        /DISCARD/ : { *(.pdr) *(.gnu.attributes) *(.reginfo) ; *(.note) ; *(.comment) *(__ex_table) *(interp); }
+}
+
